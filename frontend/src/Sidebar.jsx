@@ -79,6 +79,7 @@ export default function Sidebar(){
             <span onClick={createNewChat}><i className="fa-solid fa-pen-to-square"></i></span>
           </button>
           <ul className='history'>
+            <p className='chat-menu'>chats</p>
            {
             allThreads?.map((thread,idx)=>(
               <li key={idx} 
@@ -92,10 +93,11 @@ export default function Sidebar(){
                 }}></i>
                 </li>
             ))
-           };
+           }
           </ul>
           <div className='sidebar-footer'>
-           <p style={{textAlign:"center"}}>By developer &hearts;</p>
+           <p style={{textAlign:"center"}}>© 2025 MayaAI | Powered by OpenAI
+</p>
           </div>
         </section>
     );

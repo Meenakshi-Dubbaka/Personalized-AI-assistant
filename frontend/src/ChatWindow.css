@@ -92,12 +92,12 @@ input:focus{
     text-decoration: underline;
     cursor: pointer;
 }
-/* .dropdown{
+.dropdown{
     position: absolute;
     top:4rem;
     right: 4rem;
     width: 150px;
-    background-color: #323232;
+    background-color: #3a3f47;
     padding:0.3rem 0.5rem;
     border-radius: 14px;
     z-index: 1000;
@@ -110,9 +110,9 @@ input:focus{
     cursor: pointer;
 }
 .dropdownitem:hover{
-    background-color: rgb(180,180,180,0.1);
+    background-color:  rgba(200, 200, 211, 0.15);
     border-radius: 16px;
-} */
+}
 .chatwindow p, 
 .chatwindow li, 
 .chatwindow div {
