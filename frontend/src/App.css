@@ -1,0 +1,31 @@
+*{
+    color: #ececec;
+    font-family:  'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.app{
+    background-color: #212121;
+    display: flex;
+}
+/* App.css or index.css */
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #34344e, #476391);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #434078; /* darker indigo when hovered */
+}

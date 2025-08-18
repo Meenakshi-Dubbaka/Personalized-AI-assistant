@@ -1,0 +1,108 @@
+
+ body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  align-items: center;
+  background-color: #121212;
+  position: relative;
+  overflow: hidden;
+}
+
+/* SigmaGPT watermark above card */
+ .watermark {
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.07);
+  margin-top: 10px;
+  margin-bottom: 10px; /* space between watermark and card */
+  text-align: center;
+} 
+
+/* SigmaGPT watermark above card */
+ .watermark {
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.07);
+  margin-bottom: 5px; /* space between watermark and card */
+} 
+
+.auth-container {
+  width: 350px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+              0 0 15px rgba(0, 255, 200, 0.15);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #00f0ff, #6f00ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(80, 80, 80, 0.8);
+  background: rgba(40, 40, 40, 0.8);
+  color: #ffffff;
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-container input::placeholder {
+  color: #aaa;
+}
+
+.auth-container input:focus {
+  outline: none;
+  border-color: #00f0ff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: linear-gradient(90deg, #4cb8c4, #6558f5); 
+  color: white;
+ 
+}
+
+.auth-container button:hover {
+  background: linear-gradient(90deg, #3da8b3, #5948d6); 
+  transform: translateY(-1px);
+}
+
+.switch-form {
+  text-align: center;
+  margin-top: 12px;
+  cursor: pointer;
+  color: #4da6ff;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.switch-form:hover {
+  color: #00f0ff;
+  text-decoration: underline;
+}
+
