@@ -10,9 +10,9 @@ body{
     background-color: #212121;
     display: flex;
 }
-/* App.css or index.css */
 
-/* Custom Scrollbar Styling */
+
+
 ::-webkit-scrollbar {
   width: 8px;
 }

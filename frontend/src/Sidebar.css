@@ -10,10 +10,8 @@
     overflow-y: auto;
 
 }
-
  .newchat{
     font-size: medium;
-   
  }
 button{
     display: flex;
@@ -48,7 +46,7 @@ button:hover{
 
 .history li:hover {
   background: rgba(99,102,241,0.15); 
-  transform: translateX(4px); /* subtle movement */
+  transform: translateX(4px); 
 }
 .sidebar-footer{
     margin: 10px;

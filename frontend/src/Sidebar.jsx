@@ -52,8 +52,8 @@ export default function Sidebar(){
       setReply(null);
     }catch(e){
       console.log(e)
-    }
-  }
+    };
+  };
   const delteThread=async(threadId)=>{
     try{
      const response= await fetch(`http://localhost:8080/api/thread/${threadId}`,{method:"DELETE",credentials: "include" });
@@ -68,9 +68,9 @@ export default function Sidebar(){
 
     }catch(e){
       console.log(e)
-    }
+    };
 
-  }
+  };
     return(
         <section className='sidebar' >
           <button >
@@ -92,11 +92,11 @@ export default function Sidebar(){
                 }}></i>
                 </li>
             ))
-           }
+           };
           </ul>
           <div className='sidebar-footer'>
            <p style={{textAlign:"center"}}>By developer &hearts;</p>
           </div>
         </section>
-    )
-}
+    );
+};
