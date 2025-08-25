@@ -11,7 +11,7 @@ const app=express();
 const port=8080;
 
 app.use(cors({
-     origin: 'http://localhost:5173', // frontend URL
+     origin: "https://personalized-ai-assistant-five.vercel.app", // frontend URL
   credentials: true // allow cookies/auth headers
 }));
 
