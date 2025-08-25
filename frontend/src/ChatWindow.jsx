@@ -10,7 +10,7 @@ export default function ChatWindow(){
   const{prompt,setPrompt,reply,setReply,setCurrThreadId,currThreadId,setPrevChats,setNewChat,setAllThreads,setUser,user}=useContext(MyContext);
   const [loading,setLoding]=useState(false);
   const [isOpen,setIsOpen]=useState(false);//set default false value
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const getResponse=async()=>{
     setLoding(true);
     setNewChat(false);
@@ -82,7 +82,9 @@ export default function ChatWindow(){
   }
   const notify=()=>{
     toast.success("sucessfully logged out !")
-  }
+  };
+
+
 
     return(
         <div className='chatwindow'>
@@ -97,10 +99,6 @@ export default function ChatWindow(){
           {
             isOpen&&
             <div className='dropdown'>
-              <div className="dropdownitem"><i className="fa-solid fa-gear"></i> Settings                
-              </div>
-              <div className="dropdownitem" ><i className="fa-solid fa-cloud-arrow-up"></i> Upgrade plan              
-              </div>
               <div className="dropdownitem" onClick={()=>{
                 logout();
                 notify();

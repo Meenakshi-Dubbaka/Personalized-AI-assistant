@@ -13,6 +13,7 @@
  .newchat{
     font-size: medium;
  }
+
 button{
     display: flex;
     justify-content:space-between;

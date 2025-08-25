@@ -1,9 +1,10 @@
 import './Sidebar.css';
 import { MyContext } from './MyContext';
 import { useContext, useEffect } from 'react';
-import {v1 as uuidv1} from 'uuid'
+import {v1 as uuidv1} from 'uuid';
 export default function Sidebar(){
   const{allThreads,setAllThreads,currThreadId,setNewChat,setPrompt,setReply,setCurrThreadId,setPrevChats}=useContext(MyContext);
+
 
    let getAllThreads=async()=>{
     try{
@@ -69,7 +70,6 @@ export default function Sidebar(){
     }catch(e){
       console.log(e)
     };
-
   };
     return(
         <section className='sidebar' >
@@ -95,9 +95,9 @@ export default function Sidebar(){
             ))
            }
           </ul>
-          <div className='sidebar-footer'>
-           <p style={{textAlign:"center"}}>© 2025 MayaAI | Powered by OpenAI
-</p>
+
+          <div className='sidebar-footer'> 
+           <p style={{textAlign:"center"}}>© 2025 MayaAI | Powered by OpenAI</p>
           </div>
         </section>
     );
