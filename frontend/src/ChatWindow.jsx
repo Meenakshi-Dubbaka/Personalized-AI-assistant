@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import {ScaleLoader} from 'react-spinners';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { clientServer } from './API/axios';
 
 export default function ChatWindow(){
   const{prompt,setPrompt,reply,setReply,setCurrThreadId,currThreadId,setPrevChats,setNewChat,setAllThreads,setUser,user}=useContext(MyContext);
@@ -14,20 +15,10 @@ export default function ChatWindow(){
   const getResponse=async()=>{
     setLoding(true);
     setNewChat(false);
-    const options={
-      method:"POST",
-      credentials: "include", 
-      headers:{
-         "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        message:prompt,
-        threadId:currThreadId,
-      })
-    }
+   
     try{
-      const response=await fetch("http://localhost:8080/api/chat/",options);
-      const res= await response.json();
+      const response=await clientServer.post("/api/chat/",{message:prompt,threadId:currThreadId});
+      const res= await response.data;
       console.log(res);
       setReply(res.reply);
 
@@ -62,11 +53,8 @@ export default function ChatWindow(){
 
   const logout=async()=>{
     try{
-       const response = await fetch("http://localhost:8080/api/user/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-     const data = await response.json();
+       const response = await clientServer.post("/api/user/logout");
+     const data = await response.data;
     console.log(data.message);
     setUser(null)
     setPrevChats([]);

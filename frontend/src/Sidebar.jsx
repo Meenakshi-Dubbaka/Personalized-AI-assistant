@@ -2,17 +2,16 @@ import './Sidebar.css';
 import { MyContext } from './MyContext';
 import { useContext, useEffect } from 'react';
 import {v1 as uuidv1} from 'uuid';
+import { clientServer } from './API/axios';
 export default function Sidebar(){
   const{allThreads,setAllThreads,currThreadId,setNewChat,setPrompt,setReply,setCurrThreadId,setPrevChats}=useContext(MyContext);
 
 
    let getAllThreads=async()=>{
     try{
-      const response=await fetch("http://localhost:8080/api/thread",{
-         credentials: "include"
-      });
-      const data=await response.json();
-       if (!response.ok) {
+      const response=await clientServer.get(`/api/thread`);
+      const data=await response.data;
+       if (response.status!==200) {
       console.log(data.message || "Failed to fetch threads");
       return;
     }
@@ -24,7 +23,7 @@ export default function Sidebar(){
       setAllThreads(filteredData)
 
     }catch(e){
-      console.log(e)
+      console.log(e.response?.data?.message||"Error")
     }
   };
 
@@ -43,10 +42,8 @@ export default function Sidebar(){
   const changeThread=async (newThreadId)=>{
     setCurrThreadId(newThreadId)
     try{
-      const response=await fetch(`http://localhost:8080/api/thread/${newThreadId}`,{
-         credentials: "include"  
-      });
-      const res=await response.json();
+      const response=await clientServer.get(`/api/thread/${newThreadId}`);
+      const res=await response.data;
       console.log(res);
       setPrevChats(res);
       setNewChat(false);
@@ -57,10 +54,10 @@ export default function Sidebar(){
   };
   const delteThread=async(threadId)=>{
     try{
-     const response= await fetch(`http://localhost:8080/api/thread/${threadId}`,{method:"DELETE",credentials: "include" });
-     const res=await response.json();
+     const response=await clientServer.delete(`/api/thread/${threadId}`); 
+     const res=await response.data;
      console.log(res);
-     //update all threads re-render
+     //update all threads 
      setAllThreads( prev=>prev.filter(thread=>thread.threadId!==threadId))
      //clear in current chats
      if(threadId===currThreadId){

@@ -2,6 +2,7 @@ import { useState,useContext } from "react";
 import {MyContext} from './MyContext'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { clientServer } from "./API/axios";
 import './Auth.css';
 
 export default function Login(){
@@ -12,17 +13,11 @@ export default function Login(){
     const handleLogin=async(e)=>{
         try{
              e.preventDefault();
-            const response=await fetch("http://localhost:8080/api/user/login",
-                {
-                method:"POST",
-                headers:{ "Content-Type":"application/json"},
-                credentials:"include",
-                 body: JSON.stringify({ email, password }),
-                });
-                const data=await response.json();
-                console.log(data);
-                if (response.ok) {
-                    const { user } = data;
+            const response=await clientServer.post(`/api/user/login`,{ email, password });
+                const data=await response.data;
+                console.log(data); 
+                const { user } = data;
+                if (user) {                   
                     setUser({ username: user.username, id: user.id });
                     toast.success("Successfully Logged in!");
                     navigate("/chat");
@@ -32,7 +27,7 @@ export default function Login(){
 
         }catch(e){
             console.log(e);
-            toast.error("Something went wrong");
+            toast.error(e.response?.data?.message||"Something went wrong");
         }
     }
     
