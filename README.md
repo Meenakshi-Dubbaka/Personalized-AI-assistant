@@ -14,7 +14,8 @@ A full-stack AI-powered personalized chat application using OpenAI API, React, N
    cd backend
    npm install
  ### **Frontend Setup**
+
 1. Navigate to frontend folder:
    ```bash
-  cd frontend
-  npm run dev
+   cd frontend
+   npm run dev
