@@ -1,42 +1,43 @@
-import { useState,useContext } from "react";
-import {MyContext} from './MyContext'
+import { useState, useContext } from "react";
+import { MyContext } from "./MyContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { clientServer } from "./API/axios";
-import './Auth.css';
+import "./Auth.css";
 
-export default function Login(){
-    const[email,setEmail]=useState("");
-    const [password, setPassword] = useState("");
-    const { setUser } = useContext(MyContext);
-    const navigate = useNavigate();
-    const handleLogin=async(e)=>{
-        try{
-             e.preventDefault();
-            const response=await clientServer.post(`/api/user/login`,{ email, password });
-                const data=await response.data;
-                console.log(data); 
-                const { user } = data;
-                if (user) {                   
-                    setUser({ username: user.username, id: user.id });
-                    toast.success("Successfully Logged in!");
-                    navigate("/chat");
-                  } else {
-                    toast.error(data.message || "Login failed");
-                   }
-
-        }catch(e){
-            console.log(e);
-            toast.error(e.response?.data?.message||"Something went wrong");
-        }
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setUser } = useContext(MyContext);
+  const navigate = useNavigate();
+  const handleLogin = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await clientServer.post(`/api/user/login`, {
+        email,
+        password,
+      });
+      const data = await response.data;
+      console.log(data);
+      const { user } = data;
+      if (user) {
+        setUser({ username: user.username, id: user.id });
+        toast.success("Successfully Logged in!");
+        navigate("/chat");
+      } else {
+        toast.error(data.message || "Login failed");
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error(e.response?.data?.message || "Something went wrong");
     }
-    
- const goToLogin = () => {
+  };
+
+  const goToLogin = () => {
     navigate("/register");
   };
-    return(
-      
-         <div className="auth-page">
+  return (
+    <div className="auth-page">
       <div className="watermark">MayaAI</div>
       <div className="auth-container">
         <h2>Login</h2>
@@ -59,5 +60,5 @@ export default function Login(){
         </div>
       </div>
     </div>
-    )
+  );
 }
