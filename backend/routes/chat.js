@@ -1,6 +1,6 @@
 import express from "express";
 import Thread from "../model/Thread.js";
-import getOpenAiResponse from "../utils/openAi.js";
+import getGroqResponse from "../utils/groqAi.js";
 import { verifyUser } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -70,7 +70,7 @@ router.post("/chat", verifyUser, async (req, res) => {
     } else {
       thread.messages.push({ role: "user", content: message });
     }
-    const assistantReply = await getOpenAiResponse(message);
+    const assistantReply = await getGroqResponse(message);
     if (!assistantReply) {
       return res.status(500).json({ error: "Assistant reply is empty" });
     }
