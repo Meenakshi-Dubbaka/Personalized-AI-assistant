@@ -23,6 +23,10 @@ const getOpenAiResponse = async (message) => {
       options
     );
     const data = await response.json();
+    console.log("FULL OPENAI RESPONSE:", data);
+     if (!data.choices) {
+      return "OpenAI error: " + (data.error?.message || "Unknown error");
+    }
     return data.choices[0].message.content;
   } catch (e) {
     console.log(e);
